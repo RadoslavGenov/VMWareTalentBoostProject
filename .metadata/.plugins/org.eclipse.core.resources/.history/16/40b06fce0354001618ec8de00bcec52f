@@ -1,0 +1,61 @@
+package parking.main;
+
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class BoundedBuffer {
+	public final Lock lock = new ReentrantLock();
+	private final Condition notFull = lock.newCondition();
+	private final Condition notEmpty = lock.newCondition();
+	public final Driver[] buffer = new Driver[PARKING_SIZE];
+	private Driver result;
+	private static final int PARKING_SIZE = 10;
+
+	private int count;
+
+	public void put(Driver obj) throws InterruptedException {
+		try {
+			lock.lock();
+				while (count == PARKING_SIZE) {
+					notFull.wait();
+				}
+			
+			for (int i = 0; i < PARKING_SIZE; i++) {
+				if (buffer[i] == null) {
+					buffer[i] = obj;
+					obj.arrivalTime = (long) (System.nanoTime() / 1e9);
+					obj.exit = obj.arrivalTime + obj.stay;
+					System.out.println("A car has been parked! ");
+					++count;
+				}
+			}
+			notEmpty.signal();
+			return;
+		} finally {
+			lock.unlock();
+		}
+	}
+
+	public Driver get() throws InterruptedException {
+		try {
+			lock.lock();
+			synchronized (notEmpty) {
+				while (count == 0) {
+					notEmpty.wait();
+				}
+			}
+			for (int i = 0; i < PARKING_SIZE; i++) {
+				if (buffer[i] != null && buffer[i].exit <= System.nanoTime()) {
+					result = buffer[i];
+					buffer[i] = null;
+					--count;
+				}
+			}
+			notFull.signal();
+			return result;
+		} finally {
+			lock.unlock();
+		}
+	}
+}

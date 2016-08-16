@@ -1,0 +1,5 @@
+package com.vmware.game;
+
+public class SimpleRestClient {
+
+}

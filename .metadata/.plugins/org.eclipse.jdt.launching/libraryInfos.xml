@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="C:\Apps\GIT\Eclipse\JDK" version="1.8.0_92">
+<bootpath>
+<entry path="C:\Apps\GIT\Eclipse\JDK\lib\resources.jar"/>
+<entry path="C:\Apps\GIT\Eclipse\JDK\lib\rt.jar"/>
+<entry path="C:\Apps\GIT\Eclipse\JDK\lib\sunrsasign.jar"/>
+<entry path="C:\Apps\GIT\Eclipse\JDK\lib\jsse.jar"/>
+<entry path="C:\Apps\GIT\Eclipse\JDK\lib\jce.jar"/>
+<entry path="C:\Apps\GIT\Eclipse\JDK\lib\charsets.jar"/>
+<entry path="C:\Apps\GIT\Eclipse\JDK\lib\jfr.jar"/>
+<entry path="C:\Apps\GIT\Eclipse\JDK\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Apps\GIT\Eclipse\JDK\lib\ext"/>
+<entry path="C:\Windows\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Apps\GIT\Eclipse\JDK\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

@@ -1,0 +1,13 @@
+package parking.main;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class Main {
+	public static void main(String[] args) {
+		BoundedBuffer parking = new BoundedBuffer();
+		new Thread(new Driver(parking)).run();
+		new Thread(new Employee(parking)).run();
+	}
+
+}

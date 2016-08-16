@@ -1,0 +1,6 @@
+create car model=A4 engine=E
+create suv model=Q6-kombi engine=P-6L-T-euro3 transmission=Man-4
+create car model=A5-hatchback engine=P-4L-T-euro3 transmission=Auto-4
+create suv model=Q5-sedan engine=D-5L-euro5 transmission=Auto-4
+find euro3
+print all

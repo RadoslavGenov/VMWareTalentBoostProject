@@ -1,0 +1,14 @@
+package FindMin;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class FindMinTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

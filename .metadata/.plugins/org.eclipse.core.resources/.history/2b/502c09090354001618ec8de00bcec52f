@@ -1,0 +1,25 @@
+package parking.main;
+
+public class Employee implements Runnable{
+
+	private BoundedBuffer parking;
+	
+	public Employee(BoundedBuffer parking) {
+		this.parking = parking;
+	}
+
+	@Override
+	public void run() {
+		try {
+			while (true) {
+				if (parking.get() != null) {
+					System.out.println("One car has left the parking! ");
+					Thread.sleep(1000);
+				}
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

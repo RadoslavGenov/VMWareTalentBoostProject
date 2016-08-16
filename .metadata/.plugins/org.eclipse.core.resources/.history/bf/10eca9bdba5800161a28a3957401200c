@@ -1,0 +1,42 @@
+package vmware.data.base.practice;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Practice {
+
+	private static final String PATH = "jdbc:postgresql://localhost:5432/student_applications?user=postgres&password=VMware1!";
+	private static final String MY_INFO = "insert into students(sid, name, avg) values('666', 'Radoka', '100')";
+	private static final String REJECTED = "insert into applications(sid, uname, uprov, accpd) values ('666', 'AUBG', 'Blagoevgrad', '0')";
+	private static final String ACCEPTED = "update applications set accpd = '1' where sid = '666' and uname = 'AUBG'";
+	private static final String ACCEPTED_TO_UNI = "select count(*) as totalAccecpted from applications where uname = 'AUBG' and accpd = '1'";
+	private static final String REJECTED_FROM_UNI = "select count(*) as totalReject from applications where uname = 'AUBG' and accpd = '1'";
+
+	public static void establishConnection() throws SQLException {
+		Connection conn = DriverManager.getConnection(PATH);
+		Statement statement = conn.createStatement();
+
+		// insert my info
+		statement.executeUpdate(MY_INFO);
+
+		// insert info to applications first rejection
+		statement.executeUpdate(REJECTED);
+
+		// then accept
+		statement.executeUpdate(ACCEPTED);
+
+		// get numbers for total rejected and approved
+        ResultSet result = statement.executeQuery(ACCEPTED_TO_UNI);
+        while (result.next()) {
+			Integer count = result.getInt(0);
+			System.out.println(count);
+		}
+	}
+
+	public static void main(String[] args) throws SQLException {
+		establishConnection();
+	}
+}

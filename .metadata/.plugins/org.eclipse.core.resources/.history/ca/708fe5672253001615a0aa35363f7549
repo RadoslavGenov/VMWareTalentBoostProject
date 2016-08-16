@@ -1,0 +1,55 @@
+package com.vmware.threading.forkjoin.findmin;
+
+import java.util.Random;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.RecursiveTask;
+
+@SuppressWarnings("serial")
+class FindMin extends RecursiveTask<Double> {
+
+	private Double arr[];
+	private int start, end;
+	public static void main(String[] args) {
+		Double[] arr = new Double[10000000];
+		Random r = new Random();
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = 2.0 + (60.0 - 2.0) * r.nextDouble();
+		}
+		ForkJoinPool pool = new ForkJoinPool();
+		Double result = pool.invoke(new FindMin(arr, 0, arr.length));
+		System.out.println(result);
+	}
+
+	public FindMin(Double[] arr2, int start, int end) {
+		this.arr = arr2;
+		this.start = start;
+		this.end = end;
+	}
+
+	@Override
+	protected Double compute() {
+		if (start - end <= 10) {
+			return computeDirectly();
+		} else {
+			int mid = start + (end - start) / 2;
+
+			FindMin left = new FindMin(arr, start, mid);
+			FindMin right = new FindMin(arr, mid, end);
+
+			invokeAll(left, right);
+
+			return Math.min(left.join(), right.join());
+		}
+	}
+
+	private Double computeDirectly() {
+		double smallest = Double.MAX_VALUE;
+		for (int i = 0; i < arr.length; i++) {
+			if (smallest > arr[i]) {
+				smallest = arr[i];
+			}
+		}
+		return smallest;
+	}
+
+}

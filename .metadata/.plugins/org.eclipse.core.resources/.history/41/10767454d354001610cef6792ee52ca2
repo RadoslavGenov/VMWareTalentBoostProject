@@ -1,0 +1,36 @@
+package com.vmware.game;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.List;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+       String roots = SimpleRestClient.httpGet("http://localhost:8080/api/sector/3/roots", 200);
+       String[] splitRoots = roots.split("\\n");
+        Digraph<Integer> graph = new Digraph<Integer>();
+//        for(String s : splitRoots){
+//        	graph.add(Integer.parseInt(s));
+//        }
+        String nodes = SimpleRestClient.httpGet("http://localhost:8080/api/sector/3/objects", 200);
+        String[] splitNodes = nodes.split("\\n");
+        for(String s : splitNodes){
+        	String[] tempSplit = s.split("\\s");
+        	graph.add(Integer.parseInt(tempSplit[0]), Integer.parseInt(tempSplit[1]));
+        }
+        for (int i = 0; i < splitRoots.length; i++) {
+        	if(graph.contains(Integer.parseInt(splitRoots[i]))){
+        		graph.neighbors.remove(splitRoots[i]);
+        	}
+		}
+        System.out.println(graph.toString());
+        //System.out.println(graph.toString());
+//        LinkedHashMap<String, String> body = new LinkedHashMap<>();
+//        body.put("trajectory", "0 1");
+//        
+//        String response = SimpleRestClient.httpPost("http://localhost:8080/api/sector/3/company/Radoka/trajectory", body, 200);
+//	    System.out.println(response);
+	}
+}

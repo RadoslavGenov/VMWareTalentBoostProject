@@ -1,0 +1,16 @@
+create table vehicles(
+	vin varchar(255) primary key not null,
+	model varchar(255) not null,
+	modelType varchar(255) not null,
+	vehicleType varchar(255) not null,
+	status bool not null,
+	engineType varchar(255) not null,
+	engineEmission varchar(255) not null,
+	engineDisplacement int,
+	enginePower int not null,
+	engineTransmission varchar(255),
+	engineTurbo bool,
+	engineHP int
+	);
+	
+	CREATE DATABASE vehicle_database

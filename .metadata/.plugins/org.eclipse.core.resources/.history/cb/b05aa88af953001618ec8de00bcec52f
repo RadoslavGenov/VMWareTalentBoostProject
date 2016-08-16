@@ -1,0 +1,22 @@
+package parking.main;
+
+public class Driver implements Runnable{
+    public long arrivalTime;
+    public long stay;
+    public long exit;
+    private BoundedBuffer parking;
+    
+	public Driver(BoundedBuffer parking) {
+		this.parking = parking;
+		this.stay = (int) Math.random() * 10 + 1;
+	}
+
+	@Override
+	public void run() {
+		try {
+			parking.put(this);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+}

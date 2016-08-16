@@ -1,0 +1,17 @@
+package com.vmware.game;
+
+import java.io.IOException;
+import java.util.LinkedHashMap;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+        String result = SimpleRestClient.httpGet("http://localhost:8080/api/sector/3/objects", 200);
+        System.out.println(result);
+        
+        LinkedHashMap<String, String> body = new LinkedHashMap<>();
+        body.put("trajectory", "70 372");
+        
+        String response = SimpleRestClient.httpPost("http://localhost:8080/api/sector/3/company/Radoka/trajectory", body, 200);
+	    System.out.println(response);
+	}
+}

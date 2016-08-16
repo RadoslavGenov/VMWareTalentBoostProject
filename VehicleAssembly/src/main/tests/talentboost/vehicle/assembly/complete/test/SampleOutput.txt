@@ -1,0 +1,28 @@
+vin	              |model| type| emission|  engine type 
+GB4nlF7Jt6yxn6Hx8 | A4  |sedan| euro6  | E
+
+vin	              |model| type| emission|  engine type 
+GB46cJ4WHSU7rMBN6 | Q6  |kombi| euro3  | P
+
+vin	              |model| type| emission|  engine type 
+GB4SN2DTjRS6Pl8NP | A5  |hatchback| euro3  | P
+
+vin	              |model| type| emission|  engine type 
+GB4AYk1uMnyRmAMSH | Q5  |sedan| euro5  | D
+
+vin	              |model| type| emission|  engine type 
+GB46cJ4WHSU7rMBN6 | Q6  |kombi| euro3  | P
+vin	              |model| type| emission|  engine type 
+GB4SN2DTjRS6Pl8NP | A5  |hatchback| euro3  | P
+
+
+vin	              |model| type| emission|  engine type 
+GB4nlF7Jt6yxn6Hx8 | A4  |sedan| euro6  | E
+vin	              |model| type| emission|  engine type 
+GB46cJ4WHSU7rMBN6 | Q6  |kombi| euro3  | P
+vin	              |model| type| emission|  engine type 
+GB4SN2DTjRS6Pl8NP | A5  |hatchback| euro3  | P
+vin	              |model| type| emission|  engine type 
+GB4AYk1uMnyRmAMSH | Q5  |sedan| euro5  | D
+
+

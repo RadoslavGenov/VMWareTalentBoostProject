@@ -1,0 +1,18 @@
+package parking.main;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class Main {
+	public static void main(String[] args) {
+		BoundedBuffer parking = new BoundedBuffer();
+		synchronized (parking.lock) {
+			ExecutorService exec = Executors.newFixedThreadPool(20);
+			exec.execute(new Driver(parking));
+			new Employee(parking).run();
+			exec.shutdown();
+			
+		}
+	}
+
+}
